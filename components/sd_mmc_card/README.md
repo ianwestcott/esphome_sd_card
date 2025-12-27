@@ -19,6 +19,7 @@ SD MMC cards components for esphome.
 sd_mmc_card:
   id: sd_mmc_card
   mode_1bit: false
+  mode_spi: false
   clk_pin: GPIO14
   cmd_pin: GPIO15
   data0_pin: GPIO2
@@ -27,13 +28,15 @@ sd_mmc_card:
   data3_pin: GPIO13
 ```
 
-* **mode_1bit** (Optional, bool): specify wether to use 1 or 4 bit lane
+* **mode_1bit** (Optional, bool): specify wether to use 1 or 4 bit lane. Default: `false`
+* **mode_spi** (Optional, bool): specify wether to use SPI. Default: `false`
 * **clk_pin** : (Required, [Pin](https://esphome.io/guides/configuration-types#pin)): clock pin
 * **cmd_pin** : (Required, [Pin](https://esphome.io/guides/configuration-types#pin)): command pin
 * **data0_pin**: (Required, [Pin](https://esphome.io/guides/configuration-types#pin)): data 0 pin
 * **data1_pin**: (Optional, [Pin](https://esphome.io/guides/configuration-types#pin)): data 1 pin, only use in 4bit mode
 * **data2_pin**: (Optional, [Pin](https://esphome.io/guides/configuration-types#pin)): data 2 pin, only use in 4bit mode
 * **data3_pin**: (Optional, [Pin](https://esphome.io/guides/configuration-types#pin)): data 3 pin, only use in 4bit mode
+* **cs_pin**: (Optional, [Pin](https://esphome.io/guides/configuration-types#pin)): CS pin, only use in SPI mode
 * **power_ctrl_pin**: (Optional, [Pin Schema](https://esphome.io/guides/configuration-types#config-pin-schema)): control the power to the sd card
 
 In case of connecting in 1-bit lane also known as SPI mode you can use table below to "convert" pin naming:
@@ -102,13 +105,25 @@ sd_mmc_card:
   power_ctrl_pin: GPIO43
 ```
 
+### SPI
+
+```yaml
+sd_mmc_card:
+  mode_1bit: true
+  mode_spi: true
+  clk_pin: GPIO14
+  cmd_pin: GPIO15
+  data0_pin: GPIO2
+  cs_pin: GPIO13
+```
+
 ## Actions
 
 ### Write file
 
 ```yaml
 sd_mmc_card.write_file:
-    path: !lambda "/test.txt" 
+    path: !lambda "/test.txt"
     data: !lambda |
         std::string str("content");
         return std::vector<uint8_t>(str.begin(), str.end())
@@ -123,7 +138,7 @@ write a file to the sd card
 
 ```yaml
 sd_mmc_card.append_file:
-    path: "/test.txt" 
+    path: "/test.txt"
     data: !lambda |
         std::string str("new content");
         return std::vector<uint8_t>(str.begin(), str.end())
@@ -243,7 +258,7 @@ std::vector<std::string> list_directory(std::string path, uint8_t depth);
 ```
 
 * **path** : root directory
-* **depth**: max depth 
+* **depth**: max depth
 
 Example
 
@@ -269,7 +284,7 @@ std::vector<FileInfo> list_directory_file_info(std::string path, uint8_t depth);
 ```
 
 * **path** : root directory
-* **depth**: max depth 
+* **depth**: max depth
 
 Example
 
