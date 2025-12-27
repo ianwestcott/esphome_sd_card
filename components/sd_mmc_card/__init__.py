@@ -63,6 +63,7 @@ CONFIG_SCHEMA = cv.All(
             cv.Optional(CONF_MODE_1BIT, default=False): cv.boolean,
             cv.Optional(CONF_MODE_SPI, default=False): cv.boolean,
             cv.Optional(CONF_CS_PIN) : pins.gpio_pin_schema({
+                CONF_OUTPUT: True,
                 CONF_PULLUP: False,
                 CONF_PULLDOWN: True,
             }),
