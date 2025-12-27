@@ -12,6 +12,7 @@ Minimum ESPHome version is ```2025.7.0```.
 - Integrated SPI support changes from https://github.com/n-serrette/esphome_sd_card/pull/25
 - Added call to `require_vfs_dir()` as recommended in https://github.com/n-serrette/esphome_sd_card/issues/29
 - Incorporated changes to support ESPHome 2025.10 as recommended in https://github.com/n-serrette/esphome_sd_card/issues/28
+- Incorporated changes to support ESPHome 2025.11 as recommended in https://github.com/n-serrette/esphome_sd_card/issues/31
 
 ## Components
 
