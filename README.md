@@ -9,7 +9,9 @@ Minimum ESPHome version is ```2025.7.0```.
 ## Fork Info
 
 - Forked from https://github.com/n-serrette/esphome_sd_card
-- Integrated changes from https://github.com/n-serrette/esphome_sd_card/pull/25
+- Integrated SPI support changes from https://github.com/n-serrette/esphome_sd_card/pull/25
+- Added call to `require_vfs_dir()` as recommended in https://github.com/n-serrette/esphome_sd_card/issues/29
+- Incorporated changes to support ESPHome 2025.10 as recommended in https://github.com/n-serrette/esphome_sd_card/issues/28
 
 ## Components
 
@@ -67,3 +69,4 @@ esp32:
 [<img src="https://github.com/youkorr.png" width="30px;" style="border-radius: 50%;" title="youkoor"/>](https://github.com/youkorr)
 [<img src="https://github.com/Yax.png" width="30px;" style="border-radius: 50%;" title="Yax"/>](https://github.com/Yax)
 [<img src="https://github.com/postwait.png" width="30px;" style="border-radius: 50%;" title="postwait"/>](https://github.com/postwait)
+[<img src="https://github.com/cvaldess.png" width="30px;" style="border-radius: 50%;" title="cvaldess"/>](https://github.com/cvaldess)
