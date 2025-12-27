@@ -6,6 +6,11 @@ To use any of these components in _your_ ESPHome device, check out the documenta
 
 Minimum ESPHome version is ```2025.7.0```.
 
+## Fork Info
+
+- Forked from https://github.com/n-serrette/esphome_sd_card
+- Integrated changes from https://github.com/n-serrette/esphome_sd_card/pull/25
+
 ## Components
 
 ### [sd_mmc_card](components/sd_mmc_card/README.md) 
@@ -61,3 +66,4 @@ esp32:
 [<img src="https://github.com/elproko.png" width="30px;" style="border-radius: 50%;" title="elproko"/>](https://github.com/elproko)
 [<img src="https://github.com/youkorr.png" width="30px;" style="border-radius: 50%;" title="youkoor"/>](https://github.com/youkorr)
 [<img src="https://github.com/Yax.png" width="30px;" style="border-radius: 50%;" title="Yax"/>](https://github.com/Yax)
+[<img src="https://github.com/postwait.png" width="30px;" style="border-radius: 50%;" title="postwait"/>](https://github.com/postwait)
