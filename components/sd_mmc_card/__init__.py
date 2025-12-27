@@ -49,6 +49,11 @@ def validate_raw_data(value):
         "data must either be a string wrapped in quotes or a list of bytes"
     )
 
+def _require_vfs_select(config):
+    """Register VFS select requirement during config validation."""
+    require_vfs_select()
+    return config
+
 CONFIG_SCHEMA = cv.All(
     cv.require_esphome_version(2025,7,0),
     cv.Schema(
@@ -73,7 +78,8 @@ CONFIG_SCHEMA = cv.All(
                 CONF_PULLDOWN: False,
             }),
         }
-    ).extend(cv.COMPONENT_SCHEMA)
+    ).extend(cv.COMPONENT_SCHEMA),
+    _require_vfs_select,
 )
 
 async def to_code(config):
