@@ -6,6 +6,7 @@ from esphome.const import (
     CONF_ID
 )
 from esphome.core import coroutine_with_priority, CORE
+from esphome.components.esp32 import require_vfs_dir
 from .. import sd_mmc_card
 
 CONF_URL_PREFIX = "url_prefix"
@@ -19,6 +20,11 @@ DEPENDENCIES = ["sd_mmc_card"]
 
 sd_file_server_ns = cg.esphome_ns.namespace("sd_file_server")
 SDFileServer = sd_file_server_ns.class_("SDFileServer", cg.Component)
+
+def _require_vfs_dir(config):
+    """Register VFS directory support requirement during config validation."""
+    require_vfs_dir()
+    return config
 
 CONFIG_SCHEMA = cv.All(
     cv.require_esphome_version(2025,7,0),
@@ -36,6 +42,7 @@ CONFIG_SCHEMA = cv.All(
             cv.Optional(CONF_ENABLE_UPLOAD, default=False): cv.boolean,
         }
     ).extend(cv.COMPONENT_SCHEMA),
+    _require_vfs_dir,
 )
 
 @coroutine_with_priority(45.0)
